@@ -1,14 +1,21 @@
 'use client'
-
 import * as React from 'react'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from './ui/skeleton'
 
 export default function ThemeToggle() {
 	const { theme, setTheme } = useTheme()
+	const [isMounted, setIsMounted] = React.useState<boolean>(false)
 	const handleClick = () => {
 		setTheme(theme === 'dark' ? 'light' : 'dark')
+	}
+	React.useEffect(() => {
+		setIsMounted(true)
+	}, [])
+	if (!isMounted) {
+		return <Skeleton className='h-[1.5rem] w-[1.5rem] px-4 py-4' />
 	}
 	return (
 		<Button variant='outline' onClick={handleClick} size='icon'>
