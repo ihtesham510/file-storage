@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
 	return (
-		<div className='flex items-center justify-end gap-5 p-4'>
+		<div className='flex items-center justify-end gap-5 border-border border-b p-4'>
 			<SignedIn>
 				<OrganizationSwitcher appearance={{ elements: 'text-black dark:text-white' }} />
 				<UserButton />
