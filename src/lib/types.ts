@@ -14,3 +14,7 @@ export interface CtxProps {
 	disabled: boolean
 	file: File
 }
+export interface ToolTipProps {
+	children: React.ReactNode
+	message: string
+}

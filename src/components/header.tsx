@@ -2,12 +2,15 @@ import { SignedIn, UserButton, SignedOut, SignInButton, OrganizationSwitcher } f
 import React from 'react'
 import { Button } from './ui/button'
 import ThemeToggle from './ThemeToggle'
+import ToolTip from './ToolTip'
 
 const Header = () => {
 	return (
 		<div className='flex items-center justify-end gap-5 border-b border-border p-4'>
 			<SignedIn>
-				<OrganizationSwitcher appearance={{ elements: 'text-black dark:text-white' }} />
+				<ToolTip message='Mange Organizations'>
+					<OrganizationSwitcher appearance={{ elements: 'text-black dark:text-white' }} />
+				</ToolTip>
 				<UserButton />
 			</SignedIn>
 			<SignedOut>
@@ -15,7 +18,9 @@ const Header = () => {
 					<Button>Sign in</Button>
 				</SignInButton>
 			</SignedOut>
-			<ThemeToggle />
+			<ToolTip message='Toggle Theme'>
+				<ThemeToggle />
+			</ToolTip>
 		</div>
 	)
 }
