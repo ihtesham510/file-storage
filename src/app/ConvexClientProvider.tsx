@@ -8,7 +8,7 @@ import { useTheme } from 'next-themes'
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
 export default function ConvexClientProvider({ children }: { children: ReactNode }) {
 	const { theme } = useTheme()
-	const clerkTheme = theme === 'dark' ? { baseTheme: dark } : undefined
+	const clerkTheme = theme !== 'dark' ? undefined : { baseTheme: dark }
 	return (
 		<ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY} appearance={clerkTheme}>
 			<ConvexProviderWithClerk client={convex} useAuth={useAuth}>
