@@ -7,6 +7,7 @@ import { useOrganization } from '@clerk/nextjs'
 import Ctx from './ContextMenu'
 import { Button } from './ui/button'
 import CreateFile from './CreateFile'
+import ConfirmDialog from './ConfirmDialog'
 
 const Files = () => {
 	const { organization } = useOrganization()
@@ -23,9 +24,11 @@ const Files = () => {
 								<CardTitle>{file.name}</CardTitle>
 								<CardDescription>{file.filetype}</CardDescription>
 							</div>
-							<Button variant='destructive' onClick={() => deleteFile({ id: file._id })} className='mt-16'>
-								Delete
-							</Button>
+							<ConfirmDialog onConfirm={() => deleteFile({ id: file._id })}>
+								<Button variant='destructive' className='mt-16'>
+									Delete
+								</Button>
+							</ConfirmDialog>
 						</CardContent>
 					</Card>
 				</Ctx>

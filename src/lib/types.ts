@@ -18,3 +18,9 @@ export interface ToolTipProps {
 	children: React.ReactNode
 	message: string
 }
+export interface AlertDialogProps {
+	children: React.ReactNode
+	title?: string
+	description?: string
+	onConfirm: () => void
+}
