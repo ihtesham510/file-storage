@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useOrganization, useUser } from '@clerk/nextjs'
 import { useMutation } from 'convex/react'
 import { api } from '@convex/_generated/api'
+import ToolTip from './ToolTip'
 
 export default function CreateFile() {
 	const [name, setName] = useState<string>('file no. 1')
@@ -30,11 +31,13 @@ export default function CreateFile() {
 
 	return (
 		<Dialog open={isopen} onOpenChange={e => setIsOpen(e)}>
-			<DialogTrigger asChild>
-				<Card className='flex h-72 w-72 cursor-pointer  items-center justify-center border-[3px] border-dotted '>
-					<CardContent>Add File</CardContent>
-				</Card>
-			</DialogTrigger>
+			<ToolTip message='Upload File'>
+				<DialogTrigger asChild>
+					<Card className='flex h-72 w-72 cursor-pointer  items-center justify-center border-[3px] border-dotted '>
+						<CardContent>Add File</CardContent>
+					</Card>
+				</DialogTrigger>
+			</ToolTip>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
 					<DialogTitle>Edit profile</DialogTitle>
