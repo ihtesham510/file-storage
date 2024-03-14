@@ -8,12 +8,14 @@ import Ctx from './ContextMenu'
 import { Button } from './ui/button'
 import CreateFile from './CreateFile'
 import ConfirmDialog from './ConfirmDialog'
+import FilesSkeleton from './FilesSkeleton'
 
 const Files = () => {
 	const { organization } = useOrganization()
 	const files = useQuery(api.file.getFiles, organization?.id ? { org_id: organization.id } : 'skip')
 	const [disable, setDisabled] = useState<boolean>(false)
 	const deleteFile = useMutation(api.file.deleteFile)
+	if (!files) return <FilesSkeleton />
 	return (
 		<>
 			{files?.map(file => (
