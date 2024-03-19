@@ -31,7 +31,7 @@ const Ctx: React.FC<CtxProps> = ({ children, disabled, file }) => {
 		setIsOpen(false)
 	}
 	const handleDelete = () => {
-		deleteFile({ id: file._id })
+		deleteFile({ id: file._id, stroageId: file.storageId })
 	}
 	useEffect(() => setName(file.name), [file.name])
 	return (

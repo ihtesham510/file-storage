@@ -9,6 +9,7 @@ import { Button } from './ui/button'
 import CreateFile from './CreateFile'
 import ConfirmDialog from './ConfirmDialog'
 import FilesSkeleton from './FilesSkeleton'
+import { toast } from './ui/use-toast'
 
 const Files = () => {
 	const { organization } = useOrganization()
@@ -23,10 +24,18 @@ const Files = () => {
 					<Card className=' h-72 w-72   border-border'>
 						<CardContent className='m-6 flex flex-col justify-evenly gap-5 '>
 							<div>
-								<CardTitle>{file.name}</CardTitle>
+								<CardTitle className='overflow-hidden text-ellipsis whitespace-nowrap'>{file.name}</CardTitle>
 								<CardDescription>{file.filetype}</CardDescription>
 							</div>
-							<ConfirmDialog onConfirm={() => deleteFile({ id: file._id })}>
+							<ConfirmDialog
+								onConfirm={() => {
+									deleteFile({ id: file._id, stroageId: file.storageId })
+									toast({
+										variant: 'default',
+										title: 'Deleted Successfully',
+									})
+								}}
+							>
 								<Button variant='destructive' className='mt-16'>
 									Delete
 								</Button>
